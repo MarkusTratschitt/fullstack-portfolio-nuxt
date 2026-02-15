@@ -1,0 +1,1 @@
+export { default } from "file:///Users/markustratschitt/.openclaw/workspace/fullstack-portfolio-nuxt/node_modules/@nuxt/vite-builder/dist/vite-node-entry.mjs"
