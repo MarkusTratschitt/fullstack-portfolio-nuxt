@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "nuxt dev -p 3333",
     "build": "nuxt build",
-    "preview": "nuxt preview -p 3333"
+    "preview": "nuxt preview -p 3333",
+    "lint": "node scripts/lint.mjs",
+    "typecheck": "nuxt typecheck",
+    "unit-tests": "node --test tests/unit/**/*.test.mjs",
+    "e2e-smoke": "node tests/e2e/smoke.mjs"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
