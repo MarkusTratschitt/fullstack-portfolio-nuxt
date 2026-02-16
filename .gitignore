@@ -1,13 +1,4 @@
-.nuxt/
-dist/
 node_modules/
-*.local
-.env*
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.DS_Store
-coverage/
-.vscode/
-.idea/
+.nuxt/
+.output/
+dist/
