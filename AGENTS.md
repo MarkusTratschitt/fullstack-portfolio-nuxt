@@ -117,6 +117,20 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
 
+## Default Operating Mode: PR-First, Green-Checks-Only
+
+For repository changes, default to this flow:
+
+1. Work on a feature branch (never push directly to protected `master`).
+2. Open/update a PR to `master`.
+3. Watch required checks and fix failures iteratively.
+4. Merge only when all gates are satisfied:
+   - all required checks are green
+   - required approvals are present
+   - all review comments are resolved
+
+Hard rule: **No merge before green required checks.**
+
 **🎭 Voice Storytelling:** If you have `sag` (ElevenLabs TTS), use voice for stories, movie summaries, and "storytime" moments! Way more engaging than walls of text. Surprise people with funny voices.
 
 **📝 Platform Formatting:**
