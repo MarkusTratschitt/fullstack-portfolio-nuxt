@@ -30,4 +30,4 @@ npm run dev
 
 Hinweis: "100%" ist nur mit echter Laufzeitprüfung erreichbar (z. B. Lighthouse + axe + manuelle Tastatur/SR-Tests).
 
-this will fail lint
+This will fail lint.
