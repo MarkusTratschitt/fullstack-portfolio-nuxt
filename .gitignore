@@ -1,8 +1,7 @@
 node_modules/
 .nuxt/
+.output/
 dist/
-<<<<<<< Updated upstream
-=======
 .DS_Store
 .env
 .env.local
@@ -12,4 +11,3 @@ dist/
 *.log
 *.lock
 *.tsbuildinfo
->>>>>>> Stashed changes
