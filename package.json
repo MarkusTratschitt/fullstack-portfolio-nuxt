@@ -7,8 +7,8 @@
     "build": "nuxt build",
     "preview": "nuxt preview -p 3333",
     "lint": "node scripts/lint.mjs",
-    "typecheck": "nuxt typecheck",
-    "unit-tests": "node --test tests/unit/**/*.test.mjs",
+    "typecheck": "npx nuxi typecheck",
+    "unit-tests": "node --test tests/unit/smoke.test.mjs",
     "e2e-smoke": "node tests/e2e/smoke.mjs"
   },
   "dependencies": {

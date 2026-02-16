@@ -4,7 +4,7 @@ const root = new URL('../../', import.meta.url)
 const requiredPaths = [
   'package.json',
   'pages/index.vue',
-  'components/HeroSection.vue'
+  'components/PrototypeCarousel.vue'
 ]
 
 const missing = requiredPaths.filter((p) => !existsSync(new URL(p, root)))
@@ -15,8 +15,8 @@ if (missing.length) {
 }
 
 const indexVue = readFileSync(new URL('pages/index.vue', root), 'utf8')
-if (!indexVue.includes('HeroSection')) {
-  console.error('e2e-smoke failed: pages/index.vue should reference HeroSection')
+if (!indexVue.includes('PrototypeCarousel')) {
+  console.error('e2e-smoke failed: pages/index.vue should reference PrototypeCarousel')
   process.exit(1)
 }
 
