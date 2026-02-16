@@ -1,5 +1,4 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import type { UserConfig } from 'vite'
 import vuetify from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
@@ -10,6 +9,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify']
   },
   vite: {
+    plugins: [vuetify({ autoImport: true })],
     ssr: { noExternal: ['vuetify'] },
     css: {
       preprocessorOptions: {
