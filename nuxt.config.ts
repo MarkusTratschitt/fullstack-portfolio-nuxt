@@ -19,8 +19,8 @@ export default defineNuxtConfig({
   },
   hooks: {
     'vite:extendConfig': (config) => {
-      config.plugins = config.plugins || []
-      config.plugins.push(vuetify({ autoImport: true }))
+      // @ts-expect-error - Vite plugin type incompatibility
+      config.plugins!.push(vuetify({ autoImport: true }))
     }
   },
   app: {
