@@ -20,8 +20,11 @@ export default defineNuxtConfig({
     }
   },
   hooks: {
-    'vite:extendConfig': (config: UserConfig) => {
-      config.plugins = config.plugins || []
+    'vite:extendConfig': (config) => {
+      if (!config.plugins) {
+        config.plugins = []
+      }
+      // @ts-expect-error - Vite plugin type incompatibility
       config.plugins.push(vuetify({ autoImport: true }))
     }
   },
