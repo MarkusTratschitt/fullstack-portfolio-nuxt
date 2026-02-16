@@ -1,0 +1,29 @@
+# Nuxt
+.nuxt
+.output
+.data
+.nitro
+.cache
+dist
+
+# Node
+node_modules
+*.log*
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+.idea
+*.swp
+*.swo
+*~
+
+# Env
+.env
+.env.*
+!.env.example
