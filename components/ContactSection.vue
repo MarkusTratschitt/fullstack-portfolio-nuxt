@@ -24,6 +24,8 @@ section#kontakt.section
 </template>
 
 <script setup lang="ts">
+import { reactive, ref } from 'vue'
+
 const form = reactive({ name: '', email: '', msg: '' })
 const errors = reactive({ name: '', email: '', msg: '' })
 const status = ref('')
