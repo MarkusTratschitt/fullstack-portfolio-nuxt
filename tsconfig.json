@@ -1,0 +1,28 @@
+{
+	"extends": "./.nuxt/tsconfig.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "NodeNext",
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"strict": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"strictBindCallApply": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictPropertyInitialization": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"useDefineForClassFields": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"types": ["@nuxt/schema"]
+	},
+	"include": ["nuxt.config.ts", "**/*.ts", "**/*.tsx", "**/*.vue"]
+}
