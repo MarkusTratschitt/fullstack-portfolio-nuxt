@@ -125,7 +125,7 @@ section.proto(:class="themeClass" :data-theme="theme" role="region" :aria-label=
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
-import { useHead } from '#imports'
+import { useHead } from '@unhead/vue'
 
 type Locale = 'de' | 'en'
 type ThemeMode = 'light' | 'dark'
