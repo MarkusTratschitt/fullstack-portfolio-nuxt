@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import { type UserConfig } from 'vite'
 import vuetify from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
@@ -22,7 +23,6 @@ export default defineNuxtConfig({
   hooks: {
     'vite:extendConfig': (config: UserConfig) => {
       config.plugins ||= []
-      // @ts-expect-error - Vite plugin type incompatibility
       config.plugins!.push(vuetify({ autoImport: true }))
     }
   },
