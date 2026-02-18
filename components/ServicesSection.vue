@@ -31,42 +31,52 @@ section#leistungen.section
         ) {{ item.short }}
 </template>
 
-<script setup lang="ts">
-import { computed, ref } from 'vue'
-
-const items = [
-  {
-    short: 'Strategie',
-    title: 'Strategie & Konzeption',
-    text: 'Wir definieren Ziele, Zielgruppe und Scope, damit aus Anforderungen ein klarer Produktplan wird.'
+<script>
+export default {
+  data() {
+    return {
+      items: [
+        {
+          short: 'Strategie',
+          title: 'Strategie & Konzeption',
+          text: 'Wir definieren Ziele, Zielgruppe und Scope, damit aus Anforderungen ein klarer Produktplan wird.'
+        },
+        {
+          short: 'Frontend',
+          title: 'Frontend Experience',
+          text: 'Moderne, responsive Interfaces mit Fokus auf Nutzerführung, Accessibility und Performance.'
+        },
+        {
+          short: 'Backend',
+          title: 'Backend & APIs',
+          text: 'Wartbare Services, sichere Authentifizierung und robuste Datenflüsse für skalierbare Produkte.'
+        },
+        {
+          short: 'Betrieb',
+          title: 'Deployment & Betrieb',
+          text: 'CI/CD, Monitoring und Release-Prozesse für verlässliche Deployments in Produktion.'
+        }
+      ],
+      activeIndex: 0
+    }
   },
-  {
-    short: 'Frontend',
-    title: 'Frontend Experience',
-    text: 'Moderne, responsive Interfaces mit Fokus auf Nutzerführung, Accessibility und Performance.'
+  computed: {
+    trackStyle() {
+      return {
+        transform: `translateX(-${this.activeIndex * 100}%)`
+      }
+    }
   },
-  {
-    short: 'Backend',
-    title: 'Backend & APIs',
-    text: 'Wartbare Services, sichere Authentifizierung und robuste Datenflüsse für skalierbare Produkte.'
-  },
-  {
-    short: 'Betrieb',
-    title: 'Deployment & Betrieb',
-    text: 'CI/CD, Monitoring und Release-Prozesse für verlässliche Deployments in Produktion.'
+  methods: {
+    goTo(index) {
+      this.activeIndex = (index + this.items.length) % this.items.length
+    },
+    prev() {
+      this.goTo(this.activeIndex - 1)
+    },
+    next() {
+      this.goTo(this.activeIndex + 1)
+    }
   }
-]
-
-const activeIndex = ref(0)
-
-const trackStyle = computed(() => ({
-  transform: `translateX(-${activeIndex.value * 100}%)`
-}))
-
-const goTo = (index: number) => {
-  activeIndex.value = (index + items.length) % items.length
 }
-
-const prev = () => goTo(activeIndex.value - 1)
-const next = () => goTo(activeIndex.value + 1)
 </script>

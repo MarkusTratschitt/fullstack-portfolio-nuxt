@@ -123,14 +123,7 @@ section.proto(:class="themeClass" :data-theme="theme" role="region" :aria-label=
       a.nav-item.nav-link(href="/impressum" target="_blank" rel="noopener noreferrer" :title="t.legal.imprint" :aria-label="t.legal.imprint") {{ t.legal.imprint }}
 </template>
 
-<script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
-
-type Locale = 'de' | 'en'
-type ThemeMode = 'light' | 'dark'
-const locale = ref<Locale>('de')
-const theme = ref<ThemeMode>('dark')
-
+<script>
 const copy = {
   de: {
     seoTitle: 'Markus Tratschitt – Full Stack Engineer aus Mainz | Nuxt 3, TypeScript, Node.js',
@@ -288,128 +281,160 @@ const copy = {
       }
     ]
   }
-} as const
-
-const t = computed(() => copy[locale.value])
-const pages = computed(() => t.value.pages)
-const themeClass = computed(() => (theme.value === 'light' ? 'theme-light' : 'theme-dark'))
-
-const activeIndex = ref(0)
-const rotationStepCount = ref(0)
-const rotationDirection = ref<1 | -1>(1)
-const isPaused = ref(false)
-const contactEmail = 'tratschitt.m@icloud.com'
-const contactForm = ref({ firstName: '', lastName: '', email: '', subject: '' })
-let timer: ReturnType<typeof setInterval> | null = null
-
-const step = computed(() => 360 / 7)
-const radius = 1280
-
-const ringStyle = computed(() => ({
-  transform: `translateZ(-${radius}px) rotateY(${-rotationStepCount.value * step.value}deg)`
-}))
-
-const normalizedDelta = (idx: number) => {
-  const len = pages.value.length
-  let d = idx - activeIndex.value
-  if (d > len / 2) d -= len
-  if (d < -len / 2) d += len
-  return d
 }
 
-const cardStyle = (idx: number) => {
-  const d = normalizedDelta(idx)
-  const abs = Math.abs(d)
-  const hidden = abs > 2
-  return {
-    transform: `rotateY(${idx * step.value}deg) translateZ(${radius}px)`,
-    opacity: hidden ? '0' : d === 0 ? '1' : abs === 1 ? '.78' : '.42',
-    pointerEvents: hidden ? 'none' : 'auto',
-    zIndex: String(100 - abs)
-  }
-}
-
-const cardClass = (idx: number) => ({
-  'is-active': idx === activeIndex.value,
-  'is-hidden': Math.abs(normalizedDelta(idx)) > 2
-})
-
-const goTo = (index: number) => {
-  const len = pages.value.length
-  const target = (index + len) % len
-  if (target === activeIndex.value) return
-
-  if (rotationDirection.value === 1) {
-    const steps = (target - activeIndex.value + len) % len
-    rotationStepCount.value += steps
-  } else {
-    const steps = (activeIndex.value - target + len) % len
-    rotationStepCount.value -= steps
-  }
-  activeIndex.value = target
-}
-
-const rotateOne = (direction: 1 | -1) => {
-  const len = pages.value.length
-  activeIndex.value = (activeIndex.value + direction + len) % len
-  rotationStepCount.value += direction
-}
-
-const prev = () => {
-  rotationDirection.value = 1
-  rotateOne(1)
-}
-
-const next = () => {
-  rotationDirection.value = -1
-  rotateOne(-1)
-}
-
-const setLocale = (value: Locale) => {
-  locale.value = value
-}
-
-const setTheme = (value: ThemeMode) => {
-  theme.value = value
-}
-
-const openMailClient = () => {
-  const firstName = contactForm.value.firstName || '-'
-  const lastName = contactForm.value.lastName || '-'
-  const email = contactForm.value.email || '-'
-  const subject = contactForm.value.subject || (locale.value === 'de' ? 'Projektanfrage' : 'Project request')
-  const body = locale.value === 'de'
-    ? `Vorname: ${firstName}\nName: ${lastName}\nE-Mail: ${email}\n\nHallo Markus,\n`
-    : `First name: ${firstName}\nLast name: ${lastName}\nEmail: ${email}\n\nHi Markus,\n`
-  window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-}
-
-watch(locale, () => {
-  activeIndex.value = 0
-  rotationStepCount.value = 0
-  rotationDirection.value = 1
-})
-
-useHead(() => ({
-  htmlAttrs: { lang: locale.value },
-  title: t.value.seoTitle,
-  meta: [{ name: 'description', content: t.value.seoDesc }]
-}))
-
-onMounted(() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduceMotion) {
-    isPaused.value = true
-    return
-  }
-  timer = setInterval(() => {
-    if (!isPaused.value) {
-      rotateOne(rotationDirection.value)
+export default {
+  name: 'PrototypeCarousel',
+  data() {
+    return {
+      locale: 'de',
+      theme: 'dark',
+      activeIndex: 0,
+      rotationStepCount: 0,
+      rotationDirection: 1,
+      isPaused: false,
+      contactEmail: 'tratschitt.m@icloud.com',
+      contactForm: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: ''
+      },
+      timer: null,
+      radius: 1280
     }
-  }, 3200)
-})
+  },
+  head() {
+    return {
+      htmlAttrs: { lang: this.locale },
+      title: this.t.seoTitle,
+      meta: [{ name: 'description', content: this.t.seoDesc }]
+    }
+  },
+  computed: {
+    t() {
+      return copy[this.locale]
+    },
+    pages() {
+      return this.t.pages
+    },
+    themeClass() {
+      return this.theme === 'light' ? 'theme-light' : 'theme-dark'
+    },
+    step() {
+      return 360 / 7
+    },
+    ringStyle() {
+      return {
+        transform: `translateZ(-${this.radius}px) rotateY(${-this.rotationStepCount * this.step}deg)`
+      }
+    }
+  },
+  watch: {
+    locale() {
+      this.activeIndex = 0
+      this.rotationStepCount = 0
+      this.rotationDirection = 1
+    }
+  },
+  mounted() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      this.isPaused = true
+      return
+    }
 
-onUnmounted(() => {
-  if (timer) clearInterval(timer)
-})
+    this.timer = setInterval(() => {
+      if (!this.isPaused) {
+        this.rotateOne(this.rotationDirection)
+      }
+    }, 3200)
+  },
+  beforeUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer)
+      this.timer = null
+    }
+  },
+  methods: {
+    normalizedDelta(idx) {
+      const len = this.pages.length
+      let d = idx - this.activeIndex
+      if (d > len / 2) d -= len
+      if (d < -len / 2) d += len
+      return d
+    },
+    cardStyle(idx) {
+      const d = this.normalizedDelta(idx)
+      const abs = Math.abs(d)
+      const hidden = abs > 2
+      return {
+        transform: `rotateY(${idx * this.step}deg) translateZ(${this.radius}px)`,
+        opacity: hidden ? '0' : d === 0 ? '1' : abs === 1 ? '.78' : '.42',
+        pointerEvents: hidden ? 'none' : 'auto',
+        zIndex: String(100 - abs)
+      }
+    },
+    cardClass(idx) {
+      return {
+        'is-active': idx === this.activeIndex,
+        'is-hidden': Math.abs(this.normalizedDelta(idx)) > 2
+      }
+    },
+    goTo(index) {
+      const len = this.pages.length
+      const target = (index + len) % len
+      if (target === this.activeIndex) return
+
+      if (this.rotationDirection === 1) {
+        const steps = (target - this.activeIndex + len) % len
+        this.rotationStepCount += steps
+      } else {
+        const steps = (this.activeIndex - target + len) % len
+        this.rotationStepCount -= steps
+      }
+      this.activeIndex = target
+    },
+    rotateOne(direction) {
+      const len = this.pages.length
+      this.activeIndex = (this.activeIndex + direction + len) % len
+      this.rotationStepCount += direction
+    },
+    prev() {
+      this.rotationDirection = 1
+      this.rotateOne(1)
+    },
+    next() {
+      this.rotationDirection = -1
+      this.rotateOne(-1)
+    },
+    setLocale(value) {
+      this.locale = value
+    },
+    setTheme(value) {
+      this.theme = value
+    },
+    openMailClient() {
+      const firstName = this.contactForm.firstName || '-'
+      const lastName = this.contactForm.lastName || '-'
+      const email = this.contactForm.email || '-'
+      const subject = this.contactForm.subject || (this.locale === 'de' ? 'Projektanfrage' : 'Project request')
+      const body = this.locale === 'de'
+        ? `Vorname: ${firstName}
+Name: ${lastName}
+E-Mail: ${email}
+
+Hallo Markus,
+`
+        : `First name: ${firstName}
+Last name: ${lastName}
+Email: ${email}
+
+Hi Markus,
+`
+
+      window.location.href = `mailto:${this.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    }
+  }
+}
 </script>
