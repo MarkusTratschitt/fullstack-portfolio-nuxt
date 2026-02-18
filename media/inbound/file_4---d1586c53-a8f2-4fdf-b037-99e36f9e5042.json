@@ -1,0 +1,227 @@
+{
+    "title": "Recording 14.2.2026 at 01:35:21",
+    "steps": [
+        {
+            "type": "setViewport",
+            "width": 2827,
+            "height": 1600,
+            "deviceScaleFactor": 1,
+            "isMobile": false,
+            "hasTouch": false,
+            "isLandscape": false
+        },
+        {
+            "type": "navigate",
+            "url": "http://localhost:3333/#index",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "http://localhost:3333/#index",
+                    "title": "Markus Weber — Full-Stack Developer"
+                }
+            ]
+        },
+        {
+            "type": "keyDown",
+            "target": "main",
+            "key": "Meta"
+        },
+        {
+            "type": "keyDown",
+            "target": "main",
+            "key": "Shift"
+        },
+        {
+            "type": "keyDown",
+            "target": "main",
+            "key": "r",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "http://localhost:3333/#leistungen",
+                    "title": "Markus Weber — Full-Stack Developer"
+                }
+            ]
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Leistungen[role=\"link\"]"
+                ],
+                [
+                    "header a:nth-of-type(1)"
+                ],
+                [
+                    "xpath///*[@id=\"__nuxt\"]/div/div/div/header/div/nav/a[1]"
+                ],
+                [
+                    "pierce/header a:nth-of-type(1)"
+                ]
+            ],
+            "offsetY": 11.006943702697754,
+            "offsetX": 43.83154296875
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Projekte[role=\"link\"]"
+                ],
+                [
+                    "header a:nth-of-type(2)"
+                ],
+                [
+                    "xpath///*[@id=\"__nuxt\"]/div/div/div/header/div/nav/a[2]"
+                ],
+                [
+                    "pierce/header a:nth-of-type(2)"
+                ]
+            ],
+            "offsetY": 11.006943702697754,
+            "offsetX": 41.439208984375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Kontakt[role=\"link\"]"
+                ],
+                [
+                    "a:nth-of-type(3)"
+                ],
+                [
+                    "xpath///*[@id=\"__nuxt\"]/div/div/div/header/div/nav/a[3]"
+                ],
+                [
+                    "pierce/a:nth-of-type(3)"
+                ]
+            ],
+            "offsetY": 16.006943702697754,
+            "offsetX": 17.1839599609375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/PROJEKT STARTEN"
+                ],
+                [
+                    "a.v-btn--elevated"
+                ],
+                [
+                    "xpath///*[@id=\"main\"]/section[1]/div/div[1]/div/a[1]"
+                ],
+                [
+                    "pierce/a.v-btn--elevated"
+                ]
+            ],
+            "offsetY": 33.61804962158203,
+            "offsetX": 105.111083984375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a.v-btn--variant-outlined > span.v-btn__content"
+                ],
+                [
+                    "xpath///*[@id=\"main\"]/section[1]/div/div[1]/div/a[2]/span[3]"
+                ],
+                [
+                    "pierce/a.v-btn--variant-outlined > span.v-btn__content"
+                ],
+                [
+                    "text/Case Studies"
+                ]
+            ],
+            "offsetY": 7.343742370605469,
+            "offsetX": 79.255126953125
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#leistungen > div > div > div:nth-of-type(1)"
+                ],
+                [
+                    "xpath///*[@id=\"leistungen\"]/div/div/div[1]"
+                ],
+                [
+                    "pierce/#leistungen > div > div > div:nth-of-type(1)"
+                ]
+            ],
+            "offsetY": 48.46697998046875,
+            "offsetX": 128.111083984375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Backend & Integrationen"
+                ],
+                [
+                    "#leistungen div:nth-of-type(2) > h3"
+                ],
+                [
+                    "xpath///*[@id=\"leistungen\"]/div/div/div[2]/h3"
+                ],
+                [
+                    "pierce/#leistungen div:nth-of-type(2) > h3"
+                ],
+                [
+                    "text/Backend & Integrationen"
+                ]
+            ],
+            "offsetY": 17.751708984375,
+            "offsetX": 45.4478759765625
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/E-Mail"
+                ],
+                [
+                    "#email"
+                ],
+                [
+                    "xpath///*[@id=\"email\"]"
+                ],
+                [
+                    "pierce/#email"
+                ]
+            ],
+            "offsetY": 4.56591796875,
+            "offsetX": 189.111083984375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "header > div > div"
+                ],
+                [
+                    "xpath///*[@id=\"__nuxt\"]/div/div/div/header/div/div"
+                ],
+                [
+                    "pierce/header > div > div"
+                ],
+                [
+                    "text/MW Dev"
+                ]
+            ],
+            "offsetY": 13.006943702697754,
+            "offsetX": 33.111083984375
+        }
+    ]
+}

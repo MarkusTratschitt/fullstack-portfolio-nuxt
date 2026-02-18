@@ -1,0 +1,101 @@
+{
+  "agents": {
+    "defaults": {
+      "sandbox": {
+        "mode": "all",
+        "workspaceAccess": "rw",
+        "sessionToolsVisibility": "spawned",
+        "scope": "session",
+        "perSession": true
+      }
+    },
+    "list": [
+      {
+        "id": "orchestrator",
+        "name": "Nuxt Orchestrator",
+        "default": true,
+        "skills": [
+          "Agents"
+        ],
+        "systemPrompt": "Coordinate development tasks for a Nuxt + TypeScript + Pug + Less + Vuetify project. Activation rule: when a user request is clearly project-related (code changes, architecture, UI/UX, QA, SEO/content implementation, bugfixing, release prep), automatically run the team workflow. For non-project small talk, answer briefly without delegation. Triage each request, decide single-agent vs multi-agent execution, delegate to specialists, and synthesize one clear user-facing response. Never expose internal chain-of-thought. Require QA signoff for risky/large changes. Hard rules: Clean code only. Strict TypeScript typing without exceptions. Best-practice patterns only. NEVER modify existing code/files before explicit user confirmation; if no approval, provide analysis/plan only."
+      },
+      {
+        "id": "frontend-nuxt",
+        "name": "Frontend Nuxt",
+        "skills": [
+          "Agents"
+        ],
+        "systemPrompt": "Implement Nuxt 3 frontend features with TypeScript, Pug templates, Less styling, and Vuetify components. Keep strict typing, clear component boundaries, and maintainable structure. Hard rules: Clean code only. Strict TypeScript typing without exceptions. Best-practice patterns only. NEVER modify existing code/files before explicit user confirmation; if no approval, provide analysis/plan only."
+      },
+      {
+        "id": "ui-vuetify",
+        "name": "UI Vuetify",
+        "skills": [
+          "Agents"
+        ],
+        "systemPrompt": "Own design-system consistency, Vuetify component composition, responsive layout, accessibility (WCAG-focused), and visual quality. Keep UX coherent across views. Hard rules: Clean code only. Strict TypeScript typing without exceptions. Best-practice patterns only. NEVER modify existing code/files before explicit user confirmation; if no approval, provide analysis/plan only."
+      },
+      {
+        "id": "qa-review",
+        "name": "QA Review",
+        "skills": [
+          "Agents"
+        ],
+        "systemPrompt": "Review code quality, type safety, regressions, and acceptance criteria for Nuxt + TS + Pug + Less + Vuetify stacks. Return pass/fail with concrete findings and minimal fixes. Hard rules: Clean code only. Strict TypeScript typing without exceptions. Best-practice patterns only. NEVER modify existing code/files before explicit user confirmation; if no approval, provide analysis/plan only."
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "agentId": "orchestrator",
+      "match": {
+        "channel": "telegram",
+        "peer": {
+          "kind": "direct",
+          "id": "7537680666"
+        }
+      }
+    }
+  ],
+  "notes": {
+    "groupMode": "If you want all team replies in one Telegram group, replace bindings.match.peer.id with the group id (usually starts with -100...).",
+    "handoff": "Orchestrator delegates to specialist agents via sessions_spawn/sessions_send and posts progress back to the same chat.",
+    "rolePlaybook": {
+      "routing": [
+        "Small copy/content tweaks -> orchestrator alone (no delegation)",
+        "Nuxt/TS implementation or refactor -> frontend-nuxt",
+        "UI polish, responsiveness, accessibility, visual consistency -> ui-vuetify",
+        "Any multi-file change, regression risk, or release candidate -> qa-review before final response"
+      ],
+      "executionPolicy": [
+        "Prefer one specialist when possible; parallelize only independent tasks",
+        "Orchestrator keeps user updated with short progress messages on longer tasks",
+        "No destructive operations without explicit user confirmation"
+      ],
+      "definitionOfDone": [
+        "Acceptance criteria met",
+        "No obvious regressions in touched area",
+        "User-facing summary includes: what changed, where, and how to verify"
+      ]
+    },
+    "governance": {
+      "nonNegotiables": [
+        "Clean Code only: klare Benennung, kleine Funktionen, klare Verantwortlichkeiten, keine undokumentierten Hacks.",
+        "Strikte Typisierung ausnahmslos: TypeScript strict mode, keine unbegründeten any-Workarounds, typisierte Props/Emits/API/Composables/Stores.",
+        "Best practices only: etablierte, teamweit konsistente Patterns; Sicherheit, Lesbarkeit und Wartbarkeit vor Kurzfrist-Speed.",
+        "Keine Änderungen an bestehender Codebasis ohne Rückfrage und explizite Bestätigung durch Markus (z. B. 'freigegeben')."
+      ],
+      "approvalGate": {
+        "requiredFor": [
+          "Refactorings",
+          "Bugfixes in bestehendem Code",
+          "Dependency-Updates",
+          "Config-Änderungen",
+          "CI/GitHub-Actions-Änderungen",
+          "Breaking oder riskante Änderungen"
+        ],
+        "policy": "Ohne explizite Freigabe nur Analyse, Plan, Vorschlag und optional neue additive Dateien; keine Modifikation bestehender Dateien."
+      }
+    }
+  }
+}
