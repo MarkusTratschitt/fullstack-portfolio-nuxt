@@ -1,0 +1,39 @@
+0 verbose cli /usr/bin/node /usr/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@11.10.0
+2 info using node@v20.20.0
+3 silly config load:file:/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/workspace/.npmrc
+5 silly config load:file:/etc/npmrc
+6 verbose title npm exec molthub@latest install moltbook
+7 verbose argv "exec" "--" "molthub@latest" "install" "moltbook"
+8 verbose logfile logs-max:10 dir:/workspace/.cache/npm/_logs/2026-02-17T22_56_26_566Z-
+9 verbose logfile /workspace/.cache/npm/_logs/2026-02-17T22_56_26_566Z-debug-0.log
+10 warn Unknown builtin config "globalignorefile". This will stop working in the next major version of npm.
+11 warn Unknown builtin config "python". This will stop working in the next major version of npm.
+12 silly logfile done cleaning log files
+13 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with EAI_AGAIN
+14 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+15 http fetch GET https://registry.npmjs.org/molthub attempt 1 failed with EAI_AGAIN
+16 http fetch GET https://registry.npmjs.org/npm attempt 2 failed with EAI_AGAIN
+17 http fetch GET https://registry.npmjs.org/molthub attempt 2 failed with EAI_AGAIN
+18 http fetch GET https://registry.npmjs.org/npm attempt 3 failed with EAI_AGAIN
+19 http fetch GET https://registry.npmjs.org/molthub attempt 3 failed with EAI_AGAIN
+20 verbose type system
+21 verbose stack FetchError: request to https://registry.npmjs.org/molthub failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org
+21 verbose stack     at ClientRequest.<anonymous> (/usr/lib/node_modules/npm/node_modules/minipass-fetch/lib/index.js:130:14)
+21 verbose stack     at ClientRequest.emit (node:events:524:28)
+21 verbose stack     at emitErrorEvent (node:_http_client:101:11)
+21 verbose stack     at _destroy (node:_http_client:884:9)
+21 verbose stack     at onSocketNT (node:_http_client:904:5)
+21 verbose stack     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+22 error code EAI_AGAIN
+23 error syscall getaddrinfo
+24 error errno EAI_AGAIN
+25 error request to https://registry.npmjs.org/molthub failed, reason: getaddrinfo EAI_AGAIN registry.npmjs.org
+26 verbose cwd /workspace
+27 verbose os Linux 6.8.0-64-generic
+28 verbose node v20.20.0
+29 verbose npm  v11.10.0
+30 verbose exit 1
+31 verbose code 1
+32 error A complete log of this run can be found in: /workspace/.cache/npm/_logs/2026-02-17T22_56_26_566Z-debug-0.log
