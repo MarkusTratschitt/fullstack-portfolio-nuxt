@@ -75,6 +75,13 @@ Reviewer markieren PR als approve-fähig nur wenn:
 - CI-Gates grün sind
 - keine offenen blocking comments existieren
 - keine Source-of-Truth-Verletzung vorliegt (offizielle Doku fehlt)
+- **keine Composition-API-Nutzung in Komponenten** enthalten ist (nur Options API)
+
+### 4.1 Blocking-Check: Options API only
+PR ist automatisch **changes requested**, wenn einer der folgenden Treffer im Komponenten-Scope auftaucht:
+- `<script setup>`
+- `ref(`, `reactive(`, `computed(`, `watch(`, `watchEffect(`
+- `onMounted(`, `onUnmounted(`, weitere Composition-Lifecycle-Hooks
 
 ## 5) Merge-Entscheidung
 **No Merge before Green Required Checks.**

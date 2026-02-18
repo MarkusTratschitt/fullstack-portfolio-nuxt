@@ -21,6 +21,19 @@ Zusätzlich verpflichtend:
 - Kein offener blocker/critical Defect
 - Scope entspricht PR-Beschreibung (keine stillen Scope-Erweiterungen)
 
+## 2.1) API-Stilvorgabe (hart)
+Im Team ist **ausschließlich Vue Options API** erlaubt.
+
+Nicht erlaubt (blockierend):
+- `<script setup>`
+- Composition-API-Lifecycle (`onMounted`, `onUnmounted`, ...)
+- Composition-API-State (`ref`, `reactive`, `computed`, `watch`, `watchEffect`)
+- Nuxt/Vue-Composables in Komponentenlogik als primäres Muster (`useXxx`)
+
+Erlaubt:
+- `data`, `computed`, `methods`, `watch`, klassische Lifecycle-Hooks der Options API
+- Services/Helper außerhalb von Komponenten, solange Komponenten selbst Options API bleiben
+
 ## 3) A11y-Minimum (MUSS)
 Jeder UI-relevante PR muss mindestens nachweisen:
 - Semantisch korrekte Interaktionselemente (Button/Link/Inputs)

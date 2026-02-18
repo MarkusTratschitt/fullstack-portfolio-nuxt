@@ -4,7 +4,7 @@ Status: **IN PROGRESS — Phase 1 dokumentarisch umgesetzt (Abnahme + Pilot-Gate
 Start: 2026-02-16
 Phase-1-Start (Woche 1–2): 2026-02-18 16:37 (GMT+1)
 Phase-1-Umsetzung (dokumentarisch): 2026-02-18 16:44–17:05 (GMT+1)
-Current Step: **Team-Abnahmeprotokoll + Pilot-PR-Gate-Lauf simuliert, Exit-Kriterien auf Real-PR-CI fokussiert**
+Current Step: **Options-API-only Policy gesetzt + Composition-API-Inventur abgeschlossen (Step 1+2)**
 
 ## Phase 1 — Foundation & Standards (Woche 1–2)
 
@@ -47,6 +47,8 @@ Current Step: **Team-Abnahmeprotokoll + Pilot-PR-Gate-Lauf simuliert, Exit-Krite
 - 2026-02-18 16:37 (Phase 1 Start): Senior-DoD, Review-Policy und ADR-Format/Vorlagen verbindlich eingeführt.
 - 2026-02-18 16:44–17:05: Team-Abnahme der neuen Policies lokal dokumentiert (`phase-1-team-abnahmeprotokoll-2026-02-18.md`).
 - 2026-02-18 17:05: Pilot-PR-Gate-Lauf gegen neue Regeln simuliert und mit Gate-Entscheid dokumentiert (`phase-1-pilot-pr-gate-lauf-2026-02-18.md`).
+- 2026-02-18: Neue Team-Leitplanke gesetzt: **nur Options API** in Komponenten; DoD + Review-Policy entsprechend erweitert.
+- 2026-02-18: Composition-API-Inventur im Repo dokumentiert (`options-api-migration-inventory-2026-02-18.md`) mit Priorisierung P1/P2.
 
 ## Risks / Blocker Log (offen)
 - Risiko 1: Pilotlauf ist simuliert; reale CI-Signale fehlen weiterhin.
@@ -55,6 +57,6 @@ Current Step: **Team-Abnahmeprotokoll + Pilot-PR-Gate-Lauf simuliert, Exit-Krite
   - Gegenmaßnahme: Formale Sign-off-Erfassung im realen PR-Kontext mit finalem Approval-Event.
 
 ## Nächste 3 operativ sinnvolle Schritte
-1. **Ersten echten Policy-PR durchführen** (mit vollständigem PR-Template, Evidence-Block, Risk&Rollback).
-2. **Required Checks real grün nachweisen** (`lint`, `typecheck`, `unit`, `e2e-smoke`, `build`) und Tracker auf `[x]` setzen.
-3. **Phase-1-Exit-Abnahme finalisieren** (produktiver Gate-Entscheid + offene Punkte in Follow-up-Backlog überführen).
+1. **P1-Migration starten:** `components/PrototypeCarousel.vue` von `<script setup>` auf Options API umstellen.
+2. **P2-Migration nachziehen:** `components/ContactSection.vue` und `components/ServicesSection.vue` auf Options API umstellen.
+3. **Blocking-Scan + Gates:** Treffer auf Composition-Pattern auf 0 bringen und `typecheck`/`build` als Migrationsnachweis dokumentieren.
