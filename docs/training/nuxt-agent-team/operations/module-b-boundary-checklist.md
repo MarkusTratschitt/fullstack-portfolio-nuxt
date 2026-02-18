@@ -1,6 +1,7 @@
 # Module B — Boundary Checklist (Server/Data)
 
 Datum: 2026-02-18  
+Status: **FINALISIERT (inkl. Testmatrix)**  
 Gewählter Flow: `dashboard-summary`
 
 ## Scope-Freeze
@@ -35,10 +36,23 @@ export interface DashboardSummaryResponse {
 }
 ```
 
+## Testmatrix (ausgearbeitet)
+| Zustand | Testtyp | Stimulus | Erwartung |
+|---|---|---|---|
+| loading | Unit | Request unresolved halten | `status === 'pending'`, Loader sichtbar |
+| empty | Unit | 200-Response mit neutralen/leeren Werten | Empty-State-Text + keine Fehlermeldung |
+| success | Unit/E2E | 200-Response mit Summendaten | KPIs/Counter gerendert, `status === 'success'` |
+| error | Unit/E2E | 500-Response simulieren | Fehlerhinweis sichtbar, `refresh()` verfügbar |
+
 ## Verification
 - Typecheck ohne `any`-Leaks in Contract-Pfad.
 - Page konsumiert nur `useDashboardSummary()`.
 - Fehlerpfad reproduzierbar (simulierter 500er) und UI zeigt fallback-state.
+- Empty-/Success-Fälle explizit im Testdesign erfasst.
+
+## Retry-Entscheidung
+- **Final:** `manual retry` (kein automatisches Retry in UI).
+- Begründung: transparente Nutzerkontrolle, weniger Lastspitzen, klareres Fehlerverhalten für reproduzierbare Tests.
 
 ## Official + Praxisquellen
 - Official: https://nuxt.com/docs/getting-started/data-fetching
@@ -47,5 +61,4 @@ export interface DashboardSummaryResponse {
 - Supplementary (Stack Overflow): https://stackoverflow.com/questions/75434573/nuxt-3-usefetch-vs-useasyncdata-differences
 
 ## Offene Punkte
-- Retry-Strategie für transiente Fehler finalisieren (`manual retry` vs. `auto retry`).
-- Testfall für Empty-State in bestehende Test-Suite aufnehmen.
+- Keine offenen Punkte im definierten Modul-B-Scope.

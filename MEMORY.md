@@ -12,3 +12,4 @@ Langfristige, kuratierte Erinnerungen.
 ## Setup-Notizen
 - Workspace: `/Users/markustratschitt/.openclaw/workspace`
 - Lokale Skills werden unter `skills/` abgelegt.
+- Assistentenname: Nox

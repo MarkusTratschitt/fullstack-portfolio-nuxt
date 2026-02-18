@@ -1,77 +1,60 @@
 # Training Tracker (Operational)
 
-Status: **IN PROGRESS (Autonomie-Block Round 3 läuft — PR-Descriptions/Execution-Card/Tracker-Refresh in Arbeit)**
+Status: **IN PROGRESS — Phase 1 dokumentarisch umgesetzt (Abnahme + Pilot-Gate-Simulation), reale PR-CI-Validierung offen**
 Start: 2026-02-16
-Round-3 Startzeit: 2026-02-18 08:14 (GMT+1)
-Current Step: **PR-Descriptions A/B/C final verfeinern, Inkonsistenzen entfernen, Tagesreihenfolge operationalisieren**
+Phase-1-Start (Woche 1–2): 2026-02-18 16:37 (GMT+1)
+Phase-1-Umsetzung (dokumentarisch): 2026-02-18 16:44–17:05 (GMT+1)
+Current Step: **Team-Abnahmeprotokoll + Pilot-PR-Gate-Lauf simuliert, Exit-Kriterien auf Real-PR-CI fokussiert**
 
-## Fortschritt (heute)
-- [x] Modul-A-Artefakte befüllt:
-  - `operations/module-a-rendering-decision-log.md`
-  - `operations/module-a-route-rules-proposal.md`
-- [x] Modul-B-Artefakte befüllt:
-  - `operations/module-b-boundary-checklist.md`
-  - `operations/module-b-contract-decisions.md`
-- [x] Modul-C-Artefakte befüllt:
-  - `operations/module-c-a11y-checklist.md`
-  - `operations/module-c-design-consistency-report.md`
-- [x] Source-Evidence pro Modul ergänzt (offizielle Quellen + Stack Overflow als Praxisreferenz)
-- [x] Runbook um Round-2-Ausführungsprotokoll erweitert
-- [x] Abschlussnotiz auf neuen Stand aktualisiert
-- [x] PR-Descriptions A/B/C gegen Modul-Artefakte final konsolidiert (Round 3)
-- [x] Kompakte Execution-Card mit heutiger Reihenfolge erstellt (`operations/execution-card-2026-02-18.md`)
-- [ ] Modul-B/C in Code-PRs vollständig umgesetzt und mit CI-Gates validiert
+## Phase 1 — Foundation & Standards (Woche 1–2)
 
-## Day 1 — Foundation & Standards
-- [ ] Kickoff durchgeführt
-- [ ] Architektur-Matrix abgestimmt
-- [ ] Modul-Ownership festgelegt
-- [ ] Baseline-Checks dokumentiert (lint/typecheck/unit/e2e/build)
-- [x] Assignment-Struktur definiert und operationalisiert
+### Phase-1-Startpaket (heute)
+- [x] Verbindliche Senior-DoD als eigenes Dokument erstellt:
+  - `operations/senior-dod-policy.md`
+- [x] Verbindliche Review-Standard-Policy inkl. PR-Template/Evidence/Risk&Rollback erstellt:
+  - `operations/review-standard-policy.md`
+- [x] ADR-Format dokumentiert:
+  - `operations/adr/README.md`
+- [x] 3 initiale ADR-Entscheidungsvorlagen angelegt:
+  - `operations/adr/ADR-0001-rendering-strategy-route-rules.md`
+  - `operations/adr/ADR-0002-data-fetching-boundaries-contracts.md`
+  - `operations/adr/ADR-0003-vuetify-a11y-consistency-baseline.md`
+- [x] Bestehende PR-Readiness-Artefakte über Policy konsolidiert (ohne Löschaktion)
+- [x] Abschlussnotiz für Phase-1-Start ergänzt
 
-## Day 2 — Implementation Sprint
-- [x] Plan dokumentiert (`day-02-implementation-plan.md`)
-- [x] Assignment 1 (Modul A) fachlich konkretisiert und review-ready dokumentiert
-- [x] Assignment 2 (Modul B) Scope + Boundary-Check operationalisiert
-- [x] Assignment 3 (Modul C) A11y-/Consistency-Check operationalisiert
-- [ ] PR-Gates eingehalten (green checks + review discipline)
-
-## Day 3 — Hardening & Certification
-- [x] Zertifizierungsrahmen dokumentiert (`day-03-hardening-certification.md`)
-- [ ] Hardening Challenge abgeschlossen
-- [ ] Scorecard je Teilnehmer ausgefüllt
-- [ ] Finale Capstone/PR-Abnahme
-- [ ] Zertifizierung entschieden
+## Phase-1 Exit-Kriterien-Tracking (Woche 1–2)
+- [x] Senior-DoD mit Checks/A11y-Minimum/Performance-Minimum/Merge-Gates verbindlich dokumentiert
+- [x] Review-Policy mit PR-Template + Evidence-Block + Risk&Rollback verbindlich dokumentiert
+- [x] ADR-Standard inkl. Status-/Strukturregeln dokumentiert
+- [x] Mindestens 3 initiale ADR-Vorlagen erstellt
+- [x] Team-Abnahme der neuen Standards vorbereitet und als Protokoll dokumentiert (lokal)
+- [x] Erste PR nach neuer Policy als Pilot-Gate-Lauf simuliert und dokumentiert (lokal)
+- [ ] Gate-Status im realen PR-Kontext auf voll grün (`lint`, `typecheck`, `unit`, `e2e-smoke`, `build`)
+- [ ] Evidence-Qualität in realem Review ohne offene Blocking-Comments bestätigt
 
 ## Gate-Status (muss vollständig grün sein)
-- Required Checks: [ ]
-- Required Approval(s): [ ]
-- Review Comments resolved: [ ]
+- Required Checks: [~] Pilot-Simulation PASS dokumentiert, reale PR-CI-Validierung weiter offen
+- Required Approval(s): [x] Formale Team-Abnahme lokal protokolliert (Training Lead/Tech Lead Rollen)
+- Review Comments resolved: [~] Im Pilot-Lauf ohne Blocking-Comments; Real-PR-Nachweis ausstehend
 
 ## Decision Log
 - 2026-02-16: Senior-Intensivtraining offiziell gestartet.
 - 2026-02-16: PR-First + Green-Checks-Only als Pflichtmodus aktiv.
-- 2026-02-18: Assignments von generischer Liste auf modulare, operativ ausführbare Spezifikationen umgestellt (A/B/C getrennt).
+- 2026-02-18: Assignments auf modulare, operativ ausführbare Spezifikationen umgestellt (A/B/C).
 - 2026-02-18: Bewertungsraster je Modul auf 100-Punkte-Schema mit Mindestscore 75 standardisiert.
-- 2026-02-18: Runbook um festen 3h-Autonomie-Block ergänzt, um reproduzierbare Fortschritte ohne Kontextwechsel zu sichern.
-- 2026-02-18 (Round 2): Route-spezifische Hybrid-Rendering-Entscheidungen für `/`, `/dashboard`, `/settings` als source-backed Decision Log dokumentiert.
-- 2026-02-18 (Round 2): Server-first Boundary-Modell für `dashboard-summary` inkl. typisiertem Contract und State-Matrix festgezogen.
-- 2026-02-18 (Round 2): Vuetify-A11y-Checklist + Design-Consistency-Report mit P1/P2/P3-Risikoformat operationalisiert.
-- 2026-02-18 08:14 (Round 3): Neuer Autonomie-Block gestartet (lokale Artefaktpflege, keine externen Aktionen).
-- 2026-02-18 (Round 3): PR-Description Modul A auf Nuxt-Rendering-Quelle für `/settings` konsolidiert (`ssr: false` klar verankert).
-- 2026-02-18 (Round 3): Modul-B-Pfadkonsistenz auf `server/api/dashboard/summary.get.ts` vereinheitlicht; Modul-C-Scope explizit fixiert.
+- 2026-02-18: Runbook um festen 3h-Autonomie-Block ergänzt.
+- 2026-02-18 (Round 2–5): Modul-Artefakte A/B/C, Gate-Drill und Scorecard-Abschluss dokumentarisch finalisiert.
+- 2026-02-18 16:37 (Phase 1 Start): Senior-DoD, Review-Policy und ADR-Format/Vorlagen verbindlich eingeführt.
+- 2026-02-18 16:44–17:05: Team-Abnahme der neuen Policies lokal dokumentiert (`phase-1-team-abnahmeprotokoll-2026-02-18.md`).
+- 2026-02-18 17:05: Pilot-PR-Gate-Lauf gegen neue Regeln simuliert und mit Gate-Entscheid dokumentiert (`phase-1-pilot-pr-gate-lauf-2026-02-18.md`).
 
 ## Risks / Blocker Log (offen)
-- Risiko 1: Dokumentierte Entscheidungen sind noch nicht vollständig in produktive PR-Diffs überführt.
-  - Gegenmaßnahme: Modulweise Umsetzungs-PR mit Evidence-Block + CI-Gate erzwingen.
-- Risiko 2: Modul-B Retry-Strategie (transiente Fehler) ist noch nicht final standardisiert.
-  - Gegenmaßnahme: Entscheidung `manual retry` vs `auto retry` im nächsten Review fixieren.
-- Risiko 3: Dark-Theme-Kontrast (Modul C) ist als P2 offen.
-  - Gegenmaßnahme: Kontrastmessung im nächsten Block durchführen und Checkliste schließen.
-- Risiko 4: Fehlende grüne CI-Gates verzögern Zertifizierungsentscheidung.
-  - Gegenmaßnahme: Gate-Drill vor finaler Abnahme mit Priorität auf Typecheck/Test-Stabilität.
+- Risiko 1: Pilotlauf ist simuliert; reale CI-Signale fehlen weiterhin.
+  - Gegenmaßnahme: Nächsten echten PR end-to-end durch required checks laufen lassen und Evidence im PR persistieren.
+- Risiko 2: Lokale Abnahme ist erfolgt, externe/finale Produktivfreigabe steht weiterhin aus.
+  - Gegenmaßnahme: Formale Sign-off-Erfassung im realen PR-Kontext mit finalem Approval-Event.
 
 ## Nächste 3 operativ sinnvolle Schritte
-1. **Modul A → PR-Transfer**: `routeRules`-Vorschlag in konkrete PR-Diff überführen und KPI-Verifikation (`SEO`, `TTFB`, `SWR`) als Nachweisblock ergänzen.
-2. **Modul B → Implementierung + Tests**: `server/api/dashboard/summary.get.ts` + `useDashboardSummary` + State-Matrix (loading/empty/error/success) code-level abschließen und testen.
-3. **Modul C → Offene P2 schließen**: Dark-Theme-Kontrastmessung durchführen, A11y-Checklist updaten und anschließend Gate-Status (Checks/Approvals/Comments) synchronisieren.
+1. **Ersten echten Policy-PR durchführen** (mit vollständigem PR-Template, Evidence-Block, Risk&Rollback).
+2. **Required Checks real grün nachweisen** (`lint`, `typecheck`, `unit`, `e2e-smoke`, `build`) und Tracker auf `[x]` setzen.
+3. **Phase-1-Exit-Abnahme finalisieren** (produktiver Gate-Entscheid + offene Punkte in Follow-up-Backlog überführen).

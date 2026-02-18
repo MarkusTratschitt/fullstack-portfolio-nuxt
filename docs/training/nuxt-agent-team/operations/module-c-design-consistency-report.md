@@ -38,7 +38,12 @@ Im gewählten Scope gab es inkonsistente Button-Varianten, uneinheitliche Feldab
 
 ## Ergebnisstand
 - Konsistenz verbessert: hoch
-- A11y-Basis erfüllt: weitgehend, mit 1 offenem P2-Punkt (Dark-Theme-Kontrast)
+- A11y-Basis erfüllt: vollständig im definierten Scope
+
+## Delta-Update (Finalisierung)
+- Dark-Theme-Kontrast (sekundäre Texte + Helper-Text) gemessen und in `module-c-a11y-checklist.md` dokumentiert.
+- Ehemaliger P2-Punkt „Dark-Theme-Kontrast offen“ geschlossen.
+- Restpunkt als P3 „tracked“ markiert (Legacy-Spacing außerhalb Scope, kein Blocker für Modulabschluss).
 
 ## Nächster Schritt
-- Kontrastmessung (Dark Theme) abschließen und Ergebnis in Checkliste nachziehen.
+- Keine offenen Pflichtpunkte mehr im Modul-C-Scope; Übergang in Gate-/PR-Validierung.
