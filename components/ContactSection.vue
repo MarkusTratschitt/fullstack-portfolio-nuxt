@@ -23,20 +23,30 @@ section#kontakt.section
       p.status(role="status" aria-live="polite") {{ status }}
 </template>
 
-<script setup lang="ts">
-const form = reactive({ name: '', email: '', msg: '' })
-const errors = reactive({ name: '', email: '', msg: '' })
-const status = ref('')
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-const onSubmit = () => {
-  errors.name = form.name ? '' : 'Bitte Namen eingeben.'
-  errors.email = /^\S+@\S+\.\S+$/.test(form.email) ? '' : 'Bitte gültige E-Mail eingeben.'
-  errors.msg = form.msg.length >= 10 ? '' : 'Bitte Ziel in mindestens 10 Zeichen beschreiben.'
+export default defineComponent({
+  name: 'ContactSection',
+  data() {
+    return {
+      form: { name: '', email: '', msg: '' },
+      errors: { name: '', email: '', msg: '' },
+      status: ''
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.errors.name = this.form.name ? '' : 'Bitte Namen eingeben.'
+      this.errors.email = /^\S+@\S+\.\S+$/.test(this.form.email) ? '' : 'Bitte gültige E-Mail eingeben.'
+      this.errors.msg = this.form.msg.length >= 10 ? '' : 'Bitte Ziel in mindestens 10 Zeichen beschreiben.'
 
-  if (!errors.name && !errors.email && !errors.msg) {
-    status.value = 'Danke! Der Prototyp hat die Anfrage lokal validiert.'
-  } else {
-    status.value = 'Bitte korrigiere die markierten Felder.'
+      if (!this.errors.name && !this.errors.email && !this.errors.msg) {
+        this.status = 'Danke! Der Prototyp hat die Anfrage lokal validiert.'
+      } else {
+        this.status = 'Bitte korrigiere die markierten Felder.'
+      }
+    }
   }
-}
+})
 </script>
