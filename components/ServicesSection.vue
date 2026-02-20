@@ -31,8 +31,8 @@ section#leistungen.section
         ) {{ item.short }}
 </template>
 
-<script setup lang="ts">
-import { computed, ref } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 
 const items = [
   {
@@ -57,16 +57,31 @@ const items = [
   }
 ]
 
-const activeIndex = ref(0)
-
-const trackStyle = computed(() => ({
-  transform: `translateX(-${activeIndex.value * 100}%)`
-}))
-
-const goTo = (index: number) => {
-  activeIndex.value = (index + items.length) % items.length
-}
-
-const prev = () => goTo(activeIndex.value - 1)
-const next = () => goTo(activeIndex.value + 1)
+export default defineComponent({
+  name: 'ServicesSection',
+  data() {
+    return {
+      items,
+      activeIndex: 0
+    }
+  },
+  computed: {
+    trackStyle() {
+      return {
+        transform: `translateX(-${this.activeIndex * 100}%)`
+      }
+    }
+  },
+  methods: {
+    goTo(index: number) {
+      this.activeIndex = (index + this.items.length) % this.items.length
+    },
+    prev() {
+      this.goTo(this.activeIndex - 1)
+    },
+    next() {
+      this.goTo(this.activeIndex + 1)
+    }
+  }
+})
 </script>
